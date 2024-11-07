@@ -1,21 +1,22 @@
-def count_letters(string):
+def count_letters(text):
     symbol_dict = dict()
-    for symbol in string.casefold():
-        if symbol in symbol_dict:
-            symbol_dict[symbol] += 1
-        else:
-            symbol_dict[symbol] = 1
-    not_letters = [' ', ',', '!', '—', ':', '.', '…', ';', '\n']
-    for i in not_letters:
-        del symbol_dict[i]
+    for symbol in text:
+        if symbol.isalpha():
+            result_symbol = symbol.lower()
+            if result_symbol in symbol_dict:
+                symbol_dict[result_symbol] += 1
+            else:
+                symbol_dict[result_symbol] = 1
     return symbol_dict
+
 
 def calculate_frequency(symbol_dict):
     summ = sum(symbol_dict.values())
     frequency = dict()
     for letter, value in symbol_dict.items():
-        frequency[letter] = round(value / summ, 2)
+        frequency[letter] = value / summ
     return frequency
+
 
 main_str = """
 У лукоморья дуб зелёный;
@@ -57,4 +58,4 @@ count = count_letters(main_str)
 frequency = calculate_frequency(count)
 
 for letter, value in frequency.items():
-    print(f'{letter}: {value}')
+    print(f'{letter}: {round(value, 2)}')

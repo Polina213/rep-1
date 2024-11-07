@@ -1,13 +1,13 @@
-def item_index(items, find):
-    if find in items:
-        return items.index(find)
-    else:
-        return None
+def find_index(items, desired):
+    for i, item in enumerate(items):
+        if item == desired:
+            return i
+
 
 items_list = ['яблоко', 'банан', 'апельсин', 'груша', 'киви', 'банан']
 
 for find_item in ['банан', 'груша', 'персик']:
-    index_item = item_index(items_list, find_item)
+    index_item = find_index(items_list, find_item)
     if index_item is not None:
         print(f"Первое вхождение товара '{find_item}' имеет индекс {index_item}.")
     else:

@@ -1,7 +1,8 @@
 def find_index(items, desired):
-    for i, item in enumerate(items):
-        if item == desired:
-            return i
+    if desired in items:
+        return items.index(desired)
+    else:
+        return None
 
 
 items_list = ['яблоко', 'банан', 'апельсин', 'груша', 'киви', 'банан']
